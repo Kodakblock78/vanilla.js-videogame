@@ -83,7 +83,7 @@ class Player {
 
     // Function to get a random color for collision
     getCollisionColor() {
-        const colors = ["orange", "blue", "green", "purple", "red", "yellow"];
+        const colors = ["orange", "blue", "green", "purple", "red", "yellow","orange"];
         return colors[Math.floor(Math.random() * Math.floor(colors.length))];
     }
 }
@@ -151,6 +151,7 @@ function countColors() {
     document.getElementById("greenCount").innerHTML = colorCount["green"]
     document.getElementById("purpleCount").innerHTML = colorCount["purple"]
     document.getElementById("yellowCount").innerHTML = colorCount["yellow"]
+    document.getElementById("orangeCount").innerHTML = colorCount["orange"]
 
     console.log(`Color Counts:`);
     console.log(`Orange: ${colorCount["orange"]}`);
