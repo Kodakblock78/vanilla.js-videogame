@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 890;
 canvas.height = 800;
 
-let playersAmount = 80; 
+let playersAmount = 80;
 let players = [];
 
 // Player class
@@ -78,16 +78,13 @@ class Player {
             } else if (otherPlayer.color === "black" && this.color !== "black") {
                 otherPlayer.color = this.color;  // Take the other's color
             }
-
-           
-
         }
     }
 
     // Function to get a random color for collision
-    getCollisionColor() {
+    getCollisionColor(x) {
         const colors = ["orange", "blue", "green", "purple", "red"];
-        return colors[Math.floor(Math.random() * colors.length)];
+        return colors[Math.floor(Math.random() * Math.floor(colors.length * x))];
     }
 }
 
@@ -127,8 +124,35 @@ for (let i = 0; i < playersAmount; i++) {
 const randomIndex = Math.floor(Math.random() * players.length);
 const randomIndex2 = Math.floor(Math.random() * players.length / 2); // Divide random index by 2
 
-players[randomIndex].color = players[randomIndex].getCollisionColor(); 
-players[randomIndex2].color = players[randomIndex2].getCollisionColor(); // Assign color to one player
+players[randomIndex].color = players[randomIndex].getCollisionColor(1);
+players[randomIndex2].color = players[randomIndex2].getCollisionColor(1); // Assign color to one player
+
+// Function to count balls by color
+function countColors() {
+    let colorCount = {
+        "orange": 0,
+        "blue": 0,
+        "green": 0,
+        "purple": 0,
+        "red": 0,
+        "black": 0
+    };
+
+    // Count the occurrences of each color
+    players.forEach(player => {
+        if (colorCount[player.color] !== undefined) {
+            colorCount[player.color]++;
+        }
+    });
+
+    console.log(`Color Counts:`);
+    console.log(`Orange: ${colorCount["orange"]}`);
+    console.log(`Blue: ${colorCount["blue"]}`);
+    console.log(`Green: ${colorCount["green"]}`);
+    console.log(`Purple: ${colorCount["purple"]}`);
+    console.log(`Red: ${colorCount["red"]}`);
+    console.log(`Black: ${colorCount["black"]}`);
+}
 
 // Handle key press events
 function movePlayers(event) {
@@ -166,6 +190,9 @@ function gameloop() {
             players[i].contact(players[j]);
         }
     }
+
+    // Count and log the color counts every frame
+    countColors();
 
     requestAnimationFrame(gameloop);
 }
