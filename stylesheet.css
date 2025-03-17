@@ -1,5 +1,4 @@
 
-#myCanvas{
-    border-color: black;
-    border-width: 10px;
+canvas{
+    border: black 1px solid;
 }
