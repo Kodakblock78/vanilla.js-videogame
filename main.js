@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 890;
 canvas.height = 800;
 
-let playersAmount = 8; 
+let playersAmount = 80; 
 let players = [];
 
 // Player class
@@ -86,7 +86,7 @@ class Player {
 
     // Function to get a random color for collision
     getCollisionColor() {
-        const colors = ["orange", "blue", "green", "purple", "red", "white"];
+        const colors = ["orange", "blue", "green", "purple", "red"];
         return colors[Math.floor(Math.random() * colors.length)];
     }
 }
@@ -125,7 +125,10 @@ for (let i = 0; i < playersAmount; i++) {
 
 // Randomly assign a color to one of the players
 const randomIndex = Math.floor(Math.random() * players.length);
-players[randomIndex].color = players[randomIndex].getCollisionColor();  // Assign color to one player
+const randomIndex2 = Math.floor(Math.random() * players.length / 2); // Divide random index by 2
+
+players[randomIndex].color = players[randomIndex].getCollisionColor(); 
+players[randomIndex2].color = players[randomIndex2].getCollisionColor(); // Assign color to one player
 
 // Handle key press events
 function movePlayers(event) {
@@ -133,13 +136,13 @@ function movePlayers(event) {
         case "w":
             players.forEach(player => player.changeDirection(0, -2));
             break;
-        case "d":
+        case "s":
             players.forEach(player => player.changeDirection(0, 2));
             break;
         case "a":
             players.forEach(player => player.changeDirection(-2, 0));
             break;
-        case "s":
+        case "d":
             players.forEach(player => player.changeDirection(2, 0));
             break;
     }
