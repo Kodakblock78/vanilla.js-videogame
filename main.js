@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 890;
 canvas.height = 800;
 
-let playersAmount = 80;
+let playersAmount = 500;
 let players = [];
 
 // Player class
@@ -82,15 +82,15 @@ class Player {
     }
 
     // Function to get a random color for collision
-    getCollisionColor(x) {
-        const colors = ["orange", "blue", "green", "purple", "red"];
-        return colors[Math.floor(Math.random() * Math.floor(colors.length * x))];
+    getCollisionColor() {
+        const colors = ["orange", "blue", "green", "purple", "red", "yellow"];
+        return colors[Math.floor(Math.random() * Math.floor(colors.length))];
     }
 }
 
 // Function to spawn players without overlap
 function spawnPlayer() {
-    let radius = 20;
+    let radius = 10;
     let speed = Math.random() * 3 + 1;
     let validPosition = false;
     let x, y;
@@ -135,6 +135,7 @@ function countColors() {
         "green": 0,
         "purple": 0,
         "red": 0,
+        "yellow": 0,
         "black": 0
     };
 
@@ -144,6 +145,12 @@ function countColors() {
             colorCount[player.color]++;
         }
     });
+
+    document.getElementById("redCount").innerHTML = colorCount["red"]
+    document.getElementById("blueCount").innerHTML = colorCount["blue"]
+    document.getElementById("greenCount").innerHTML = colorCount["green"]
+    document.getElementById("purpleCount").innerHTML = colorCount["purple"]
+    document.getElementById("yellowCount").innerHTML = colorCount["yellow"]
 
     console.log(`Color Counts:`);
     console.log(`Orange: ${colorCount["orange"]}`);
