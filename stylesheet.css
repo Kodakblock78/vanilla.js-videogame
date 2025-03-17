@@ -1,4 +1,45 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;  /* Stack elements vertically */
+    background-color: #f0f0f0; /* Optional background color */
+}
 
-canvas{
-    border: black 1px solid;
+/* Set canvas dimensions */
+canvas {
+    border: 1px solid #000; /* Optional: Border to see the canvas */
+    display: block;
+}
+
+/* Center and style the #colorScores div */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px; /* Space between canvas and colorScores */
+}
+
+#colorScores {
+    display: flex;             /* Align items inside horizontally */
+    gap: 15px;                 /* Space between color boxes */
+    justify-content: center;   /* Center the color boxes horizontally */
+    text-align: center;        /* Center text inside colorScores */
+    font-size: 20px;           /* Increase font size by 2 (from default) */
+}
+
+/* To make the text bigger and more centered */
+#colorScores {
+    font-size: 32px; /* Increase the font size to 32px */
+    font-weight: bold; /* Optional: Make the text bold */
+    color: #333; /* Optional: Change text color */
+}
+
+.colorBox {
+    width: 50px;               /* Set width of each color box */
+    height: 50px;              /* Set height of each color box */
+    background-color: #ff0000; /* Example color */
+    border: 1px solid #000;    /* Optional border around each box */
 }
